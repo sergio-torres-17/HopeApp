@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imgLogoLogin"
                 android:layout_width="match_parent"
                 android:layout_height="236dp"
                 android:layout_marginLeft="25dp"
@@ -58,6 +58,7 @@
                 android:inputType="textPassword"
                 android:paddingLeft="5dp" />
             <CheckBox
+                android:id="@+id/chkShowPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
