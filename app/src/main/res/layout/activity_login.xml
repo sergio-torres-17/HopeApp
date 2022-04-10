@@ -77,6 +77,26 @@
                 android:textColor="#FFF"
                 android:textSize="12sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abel"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="16dp"
+                android:text="@string/vLoginTxtNuevo" />
+
+            <TextView
+                android:id="@+id/txtClkRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abel"
+                android:text="@string/vLoginTxtRegistro"
+                android:textAlignment="center"
+                android:textColor="#07A4AA"
+                android:textSize="23dp"
+                android:textStyle="bold" />
+
         </LinearLayout>
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

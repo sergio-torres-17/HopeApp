@@ -6,8 +6,15 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <!-- Ventana Login-->
+    <string name="vLoginTxtRegistro">¡Regisrate!</string>
+    <string name="vLoginTxtNuevo">¿Eres nuevo/a?</string>
+    <!-- Ventana de registro uno-->
+    <string name="titleRegUno">¿Cómo deseas Registrarte?</string>
+    <string name="vregistroUnoRbPaciente">Paciente</string>
+    <string name="vregistroUnoRbDoctor">Doctor</string>
+    <string name="vRegistroUnoBtnEmail">Registrar con Email</string>
 </resources>
