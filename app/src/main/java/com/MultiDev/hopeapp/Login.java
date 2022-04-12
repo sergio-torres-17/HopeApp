@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.MultiDev.hopeapp.GUIRegistros.VentanaRegistroUno;
 import com.MultiDev.hopeapp.WebService.Medicos.RequestList;
 import com.MultiDev.hopeapp.WebService.Objetos.ObjRespuestaWS;
 import com.android.volley.Response;
@@ -23,7 +25,8 @@ import java.security.PrivateKey;
 public class Login extends AppCompatActivity {
     private EditText txtUser, txtPass;
     private ImageView imgLogo;
-    private Button btnLogIn;
+    private Button btnLogIn, btnLogInGoogle;
+    private TextView preTxtRegisterLogin,txtClkRegister;
     private Animation anim1, anim2;
     private CheckBox chkPass;
     private ObjRespuestaWS respuesta;
@@ -41,7 +44,9 @@ public class Login extends AppCompatActivity {
         this.btnLogIn= findViewById(R.id.btnLogin);
         this.imgLogo = findViewById(R.id.imgLogoLogin);
         this.chkPass = findViewById(R.id.chkShowPass);
-
+        this.btnLogInGoogle = findViewById(R.id.btnLoginGoogle);
+        this.preTxtRegisterLogin = findViewById(R.id.txtPreRegLogin);
+        this.txtClkRegister = findViewById(R.id.txtClkRegistro);
     }
     private void animar(){
         anim1 = AnimationUtils.loadAnimation(Login.this, R.anim.down_des);
@@ -50,6 +55,9 @@ public class Login extends AppCompatActivity {
         this.btnLogIn.setAnimation(this.anim1);
         this.imgLogo.setAnimation(this.anim1);
         this.chkPass.setAnimation(this.anim1);
+        this.btnLogInGoogle.setAnimation(this.anim1);
+        this.preTxtRegisterLogin.setAnimation(this.anim1);
+        this.txtClkRegister.setAnimation(this.anim1);
     }
     private void inicializarEventos(){
         this.btnLogIn.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +99,12 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-
+        this.txtClkRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this, VentanaRegistroUno.class));
+            }
+        });
     }
     private boolean validarCampos(){
         return (this.txtUser.getText().toString().length()>0&&

@@ -1,9 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".GUIRegistros.VentanaRegistroGen">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/txtTituloRegistroGen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/abel"
+                android:text="@string/vRegistroGenTitulo"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="italic|bold" />
+            <LinearLayout
+                android:id="@+id/vRegisroGenLyInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bordes_redondeados"
+                >
+                <EditText
+                    android:id="@+id/vRegistroGenedtNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:drawableLeft="@drawable/icon_lock"
+                    android:hint="@string/vRegistroGenTxtNombre"
+                    android:textColorHint="@color/colorHint"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="5dp" />
+                <EditText
+                    android:id="@+id/vRegistroGenEdtApelidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:drawableLeft="@drawable/icon_lock"
+                    android:hint="@string/vRegistroGenTxtApellidos"
+                    android:textColorHint="@color/colorHint"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="5dp" />
+                <EditText
+                    android:id="@+id/vRegistroGenEdtEdad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:drawableLeft="@drawable/icon_lock"
+                    android:hint="@string/vRegistroGenTxtEdad"
+                    android:textColorHint="@color/colorHint"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="5dp" />
+                <EditText
+                    android:id="@+id/vRegistroGenEdtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:drawableLeft="@drawable/icon_lock"
+                    android:hint="@string/vRegistroGenTxtEmail"
+                    android:textColorHint="@color/colorHint"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="5dp" />
+                <EditText
+                    android:id="@+id/vRegistroGenEdtPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:drawableLeft="@drawable/icon_lock"
+                    android:hint="@string/vRegistroGenTxtContraseña"
+                    android:textColorHint="@color/colorHint"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="5dp" />
+                <EditText
+                    android:id="@+id/vRegistroGenEdtPwdConf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:drawableLeft="@drawable/icon_lock"
+                    android:hint="@string/vRegistroGenTxtConfContraseña"
+                    android:textColorHint="@color/colorHint"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="5dp" />
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnRegGenSiguiente"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bordes_redondeados_btn"
+                android:text="@string/vRegistroGenBtnSiguiente"
+                android:textColor="#FFF"
+                android:textSize="12sp" />
+            <Button
+                android:id="@+id/btnRegGenCancelar"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bordes_redondeados_btn"
+                android:text="@string/vvRegistroGenBtnCancelar"
+                android:textColor="#FFF"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

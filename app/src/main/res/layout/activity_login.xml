@@ -17,7 +17,7 @@
                 android:layout_height="236dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="40dp"
                 app:srcCompat="@drawable/logohopeapp" />
         </LinearLayout>
 
@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="120dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginTop="50dp"
                 android:backgroundTint="@android:color/darker_gray"
                 android:drawableLeft="@drawable/icon_email"
                 android:hint="Usuario"
@@ -72,12 +73,32 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
-                android:background="@color/splashcolor"
+                android:background="@drawable/bordes_redondeados_btn"
                 android:text="Iniciar Sesión"
                 android:textColor="#FFF"
                 android:textSize="12sp" />
 
+            <Button
+                android:id="@+id/btnLoginGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="50dp"
+                android:background="@drawable/bordes_redondeados_btn"
+                android:drawableLeft="@drawable/google_chiquito"
+                android:text="  Iniciar Sesión con Google"
+                android:textAlignment="textStart"
+                android:textColor="#FFF"
+                android:textSize="12sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="21dp" />
+
             <TextView
+                android:id="@+id/txtPreRegLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abel"

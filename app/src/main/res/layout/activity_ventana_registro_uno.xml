@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtTituloRegistroUno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abel"
@@ -30,32 +30,46 @@
                 android:textSize="44sp"
                 android:textStyle="italic" />
             <LinearLayout
+                android:id="@+id/lyOpcionesRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bordes_redondeados"
                 android:orientation="vertical">
 
-                <RadioButton
-                    android:id="@+id/rbPaciente"
+                <RadioGroup
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/abel"
-                    android:layout_marginBottom="9dp"
-                    android:textSize="25dp"
-                    android:layout_weight="1"
-                    android:text="@string/vregistroUnoRbPaciente" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
 
-                <RadioButton
-                    android:id="@+id/rbDoctor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="25dp"
-                    android:layout_marginBottom="9dp"
-                    android:fontFamily="@font/abel"
-                    android:layout_weight="1"
-                    android:text="@string/vregistroUnoRbDoctor"/>
+                    <RadioButton
+                        android:id="@+id/rbPaciente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="9dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/abel"
+                        android:text="@string/vregistroUnoRbPaciente"
+                        android:textSize="25dp" />
+
+                    <RadioButton
+                        android:id="@+id/rbDoctor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="9dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/abel"
+                        android:text="@string/vregistroUnoRbDoctor"
+                        android:textSize="25dp" />
+
+                </RadioGroup>
+
             </LinearLayout>
 
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="169dp"
+                android:paddingStart="10dp" />
 
             <Button
                 android:id="@+id/btnRegistroEmail"
@@ -64,8 +78,28 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
+                android:paddingStart="50dp"
                 android:background="@drawable/bordes_redondeados_btn"
+                android:textAlignment="textStart"
+                android:drawableStart="@drawable/icon_email"
                 android:text="@string/vRegistroUnoBtnEmail"
+                android:textColor="#fff"
+                android:drawablePadding="15dp"
+                android:textSize="12sp" />
+            <Button
+                android:id="@+id/btnRegistroGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bordes_redondeados_btn"
+                android:drawableStart="@drawable/google_chiquito"
+                android:drawablePadding="15dp"
+                android:paddingStart="55dp"
+                android:text="@string/vRegistroUnoBtnRegisterGoogle"
+                android:textAlignment="textStart"
+                android:textColor="#fff"
                 android:textSize="12sp" />
 
         </LinearLayout>

@@ -17,4 +17,31 @@
     <string name="vregistroUnoRbPaciente">Paciente</string>
     <string name="vregistroUnoRbDoctor">Doctor</string>
     <string name="vRegistroUnoBtnEmail">Registrar con Email</string>
+    <string name="vRegistroUnoBtnRegisterGoogle">Registrar con Google</string>
+    <!-- Ventana de de registro Genérica-->
+    <string name="vRegistroGenTitulo">Ingrese sus datos de registro</string>
+    <string name="vRegistroGenTxtNombre">Nombre(s)</string>
+    <string name="vRegistroGenTxtApellidos">Apellidos</string>
+    <string name="vRegistroGenTxtEdad">Edad</string>
+    <string name="vRegistroGenTxtEmail">Email</string>
+    <string name="vRegistroGenTxtContraseña">Contraseña</string>
+    <string name="vRegistroGenTxtConfContraseña">Confirmar Contraseña</string>
+    <string name="vRegistroGenBtnSiguiente">Siguiente</string>
+    <string name="vvRegistroGenBtnCancelar">Cancelar</string>
+    <!--Ventana Registro Doctor -->
+    <string name="vRegistroDoctorTxtTitulo">Registro del doctor</string>
+    <string name="vRegistroDoctorTxtEspecialidad">Especialidad</string>
+    <string name="vRegistroDoctorTxtCedula">Cedula Profesional</string>
+    <string name="vRegistroDoctorTxtEstudios">Estudios</string>
+    <string name="vRegistroDoctorTxtExperiecia">Experiencia (Uno por linea)</string>
+    <string name="vRegistroDoctorBtnSiguiente">Siguiente</string>
+    <string name="vRegistroDoctorBtnRegresar">Regresar</string>
+    <!--Ventana Registro Paciente -->
+    <string name="vRegistroPacienteTxtTitulo">Registro del paciente</string>
+    <string name="vRegistroPacienteTxtTipoCnacer">Tipo de cancer</string>
+    <string name="vRegistroPacienteTxtTiempoDiag">Tiempo de diagnostico</string>
+    <string name="vRegistroPacienteTxtEtapaCancer">Etapa del cancer</string>
+    <string name="vRegistroPacienteTxtSintomasPrevios">Sintomas previos (Uno por linea)</string>
+    <string name="vRegistroPacienteBtnSiguiente">Siguiente</string>
+    <string name="vRegistroPacienteBtnRegresar">Regresar</string>
 </resources>
