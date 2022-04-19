@@ -56,7 +56,5 @@ public class VentanaRegistroGen extends AppCompatActivity {
         });
 
     }
-    /*private boolean validarCampos(){
 
-    }*/
 }

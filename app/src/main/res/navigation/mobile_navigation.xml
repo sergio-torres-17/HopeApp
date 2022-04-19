@@ -22,4 +22,9 @@
         android:name="com.MultiDev.hopeapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/visorPacientes"
+        android:name="com.MultiDev.hopeapp.GUIVisores.VisorPacientes"
+        android:label="fragment_visor_pacientes"
+        tools:layout="@layout/fragment_visor_pacientes" />
 </navigation>

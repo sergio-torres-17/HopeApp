@@ -64,7 +64,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validarCampos()){
-                    new RequestList().login(txtUser.getText().toString(), txtPass.getText().toString(), Login.this,new Response.Listener<String>() {
+                    new RequestList(Login.this).login(txtUser.getText().toString(), txtPass.getText().toString(), Login.this,new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             if(!response.isEmpty()){
