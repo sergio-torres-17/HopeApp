@@ -1,9 +1,11 @@
 package com.MultiDev.hopeapp.GUIRegistros;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EdgeEffect;
@@ -14,6 +16,15 @@ import android.widget.TextView;
 import com.MultiDev.hopeapp.GUIRegistros.Doctores.RegistroDoctor;
 import com.MultiDev.hopeapp.GUIRegistros.Pacientes.RegistroPaciente;
 import com.MultiDev.hopeapp.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
+
 
 public class VentanaRegistroGen extends AppCompatActivity {
     private TextView txtTitulo;
@@ -21,6 +32,7 @@ public class VentanaRegistroGen extends AppCompatActivity {
     private EditText txtNombre,txtApellidos,txtEdad,txtEmail,txtPass,txtConfPass;
     private Button btnSiguiente, btnCancelar;
     private boolean esDoctor;
+    private final int GOOGLE_SIGN_IN = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +67,6 @@ public class VentanaRegistroGen extends AppCompatActivity {
             }
         });
 
-    }
 
+    }
 }

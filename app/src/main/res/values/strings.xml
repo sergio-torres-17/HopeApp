@@ -44,6 +44,14 @@
     <string name="vRegistroPacienteTxtSintomasPrevios">Sintomas previos (Uno por linea)</string>
     <string name="vRegistroPacienteBtnSiguiente">Siguiente</string>
     <string name="vRegistroPacienteBtnRegresar">Regresar</string>
+    <!-- Ventana de registro de sintomas-->
+    <string name="vRegSintomaTitulo">Registro de sintomas</string>
+    <string name="vRegSintomaTxtSintoma">Sintoma</string>
+    <string name="vRegSintomaTxtHora">Hora</string>
+    <string name="vRegSintomaTxtIntensidad">Intensidad</string>
+    <string name="vRegSintomaTxtFecha">Fecha</string>
+    <string name="vRegSintomaTxDetallesAdicionales">Detalles Adicioneles</string>
+    <string name="vRegSintomaTxtBtnRegistrar">Registrar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
