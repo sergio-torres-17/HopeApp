@@ -7,14 +7,26 @@
         <item
             android:id="@+id/visorPacientes"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:title="@string/opcMenuDoctoresVerPacientes" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/reporteSintomas"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="@string/opcMenuDoctoresReporteSintomas" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/proximasCitas"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/opcMenuDoctoresProximasCitas" />
+    </group>
+    <group
+        android:menuCategory="secondary"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/miCuenta"
+            android:title="@string/opcMenuGenMiCuenta"
+            />
+        <item
+            android:id="@+id/opcSalir"
+            android:title="@string/opcMenuGenSalir"
+            />
     </group>
 </menu>

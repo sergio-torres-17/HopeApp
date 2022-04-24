@@ -64,27 +64,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validarCampos()){
-                    new RequestList(Login.this).login(txtUser.getText().toString(), txtPass.getText().toString(), Login.this,new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            if(!response.isEmpty()){
-                                respuesta = new ObjRespuestaWS(response, Login.this);
-                                if(respuesta.isStatus()){
-                                    if(respuesta.isStatus()) {
-                                        respuesta.mostrarRespuesta("¡Bienveido!", "Entrar", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-                                                startActivity(new Intent(Login.this, MainActivity.class));
-                                                finish();
-                                            }
-                                        });
-                                    }
-                                }else{
-                                    respuesta.mostrarRespuesta("¡Algo salió Mal!", "Ok");
-                                }
-                            }
-                        }
-                    });
+
                 }else{
                     AlertDialog.Builder ad = new AlertDialog.Builder(Login.this);
                     ad.setTitle("Campos Vacíos");
@@ -109,5 +89,28 @@ public class Login extends AppCompatActivity {
     private boolean validarCampos(){
         return (this.txtUser.getText().toString().length()>0&&
                 this.txtPass.getText().toString().length()>0);
+    }
+    private void loginMaestro(){
+        new RequestList(Login.this).login(txtUser.getText().toString(), txtPass.getText().toString(), Login.this,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(!response.isEmpty()){
+                    respuesta = new ObjRespuestaWS(response, Login.this);
+                    if(respuesta.isStatus()){
+                        if(respuesta.isStatus()) {
+                            respuesta.mostrarRespuesta("¡Bienveido!", "Entrar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    startActivity(new Intent(Login.this, MainActivity.class));
+                                    finish();
+                                }
+                            });
+                        }
+                    }else{
+                        respuesta.mostrarRespuesta("¡Algo salió Mal!", "Ok");
+                    }
+                }
+            }
+        });
     }
 }

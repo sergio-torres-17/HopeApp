@@ -12,6 +12,13 @@ public class Usuario {
         this.email = email;
         this.password = password;
     }
+    public Usuario(String[] info) {
+        this.nombre = info[0];
+        this.apellidos = info[1];
+        this.edad = Integer.parseInt(info[2]);
+        this.email = info[3];
+        this.password = info[4];
+    }
 
     public Usuario() {
     }
@@ -55,12 +62,10 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", edad=" + edad +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return  "" + nombre +
+                "," + apellidos +
+                "," + edad +
+                "," + email +
+                "," + password;
     }
 }

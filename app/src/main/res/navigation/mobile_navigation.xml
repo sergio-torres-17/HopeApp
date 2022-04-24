@@ -12,19 +12,34 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/reporteSintomas"
         android:name="com.MultiDev.hopeapp.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/proximasCitas"
         android:name="com.MultiDev.hopeapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/visorPacientes"
         android:name="com.MultiDev.hopeapp.GUIVisores.VisorPacientes"
-        android:label="fragment_visor_pacientes"
+        android:label="Visor de Pacientes Sin tutela"
         tools:layout="@layout/fragment_visor_pacientes" />
+    <fragment
+        android:id="@+id/miProgreso"
+        android:name="com.MultiDev.hopeapp.MiProgreso"
+        android:label="fragment_mi_progreso"
+        tools:layout="@layout/fragment_mi_progreso" />
+    <fragment
+        android:id="@+id/historialSintomas"
+        android:name="com.MultiDev.hopeapp.HistorialSintomas"
+        android:label="fragment_historial_sintomas"
+        tools:layout="@layout/fragment_historial_sintomas" />
+    <fragment
+        android:id="@+id/miCuenta"
+        android:name="com.MultiDev.hopeapp.MiCuenta"
+        android:label="fragment_mi_cuenta"
+        tools:layout="@layout/fragment_mi_cuenta" />
 </navigation>

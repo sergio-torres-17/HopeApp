@@ -46,4 +46,14 @@ public class ToolJson{
         }
         return dev;
     }
+    public static JSONObject extraerSolUnElemento(String json){
+        JSONObject dev = null;
+        try {
+            JSONArray aux = new JSONArray(json);
+            dev = aux.getJSONObject(0);
+        } catch (JSONException e) {
+            System.err.println("Error al extrar un sólo elemento: "+e.getMessage());
+        }
+        return dev;
+    }
 }

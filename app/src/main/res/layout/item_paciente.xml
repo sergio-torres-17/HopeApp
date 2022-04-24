@@ -20,9 +20,10 @@
 
             <ImageView
                 android:id="@+id/imgCdPaciente"
-                android:layout_width="185dp"
-                android:layout_height="130dp"
+                android:layout_width="160dp"
+                android:layout_height="115dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="10dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <LinearLayout

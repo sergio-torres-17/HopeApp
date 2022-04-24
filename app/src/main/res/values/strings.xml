@@ -53,5 +53,18 @@
     <string name="vRegSintomaTxDetallesAdicionales">Detalles Adicioneles</string>
     <string name="vRegSintomaTxtBtnRegistrar">Registrar</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <!--Opciones Doctores-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="opcMenuDoctoresVerPacientes">Ver pacientes</string>
+    <string name="opcMenuDoctoresReporteSintomas">Reportes de sintomas</string>
+    <string name="opcMenuDoctoresProximasCitas">Proximas Citas</string>
+    <!--Opciones Paciente -->
+    <string name="opcMenuPaientesHistSintomas">Historial Sintomas</string>
+    <string name="opcMenuPaientesMiProgreso">Mi Progreso</string>
+    <string name="opcMenuPaientesProximasCitas">Próximas Citas</string>
+
+    <!--Opciones Genericas -->
+    <string name="opcMenuGenMiCuenta">Mi cuenta</string>
+    <string name="opcMenuGenSalir">Salir</string>
+
 </resources>
