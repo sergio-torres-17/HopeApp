@@ -237,9 +237,12 @@ public class VentanaRegistroGen extends AppCompatActivity {
         });
     }
     private void rutinaSecundariaValidacion(){
-        if(validacionCampos())
+        if(validacionCampos()){
             validarUsuarioExistente();
-        else
+        }
+        else{
             this.btnSiguiente.setEnabled(false);
+        }
+
     }
 }

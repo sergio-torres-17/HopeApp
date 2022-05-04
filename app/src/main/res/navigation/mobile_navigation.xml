@@ -40,6 +40,6 @@
     <fragment
         android:id="@+id/miCuenta"
         android:name="com.MultiDev.hopeapp.MiCuenta"
-        android:label="fragment_mi_cuenta"
+        android:label="Mi cuenta"
         tools:layout="@layout/fragment_mi_cuenta" />
 </navigation>

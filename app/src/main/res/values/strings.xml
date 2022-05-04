@@ -1,4 +1,5 @@
 <resources>
+    <string name="firmaGoogleHopeapp">933262354310-o5pqun9rlh3iegv4mudi83l9sr1dk9c0.apps.googleusercontent.com</string>
     <string name="app_name">HopeApp</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,8 +8,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_gallery">Reporte de sintomas</string>
+    <string name="menu_slideshow">Proximas citas</string>
     <!-- Ventana Login-->
     <string name="vLoginTxtRegistro">¡Regisrate!</string>
     <string name="vLoginTxtNuevo">¿Eres nuevo/a?</string>
@@ -34,7 +35,7 @@
     <string name="vRegistroDoctorTxtCedula">Cedula Profesional</string>
     <string name="vRegistroDoctorTxtEstudios">Estudios</string>
     <string name="vRegistroDoctorTxtExperiecia">Experiencia (Uno por linea)</string>
-    <string name="vRegistroDoctorBtnSiguiente">Siguiente</string>
+    <string name="vRegistroDoctorBtnRegistrar">Registrar</string>
     <string name="vRegistroDoctorBtnRegresar">Regresar</string>
     <!--Ventana Registro Paciente -->
     <string name="vRegistroPacienteTxtTitulo">Registro del paciente</string>
@@ -42,7 +43,7 @@
     <string name="vRegistroPacienteTxtTiempoDiag">Tiempo de diagnostico</string>
     <string name="vRegistroPacienteTxtEtapaCancer">Etapa del cancer</string>
     <string name="vRegistroPacienteTxtSintomasPrevios">Sintomas previos (Uno por linea)</string>
-    <string name="vRegistroPacienteBtnSiguiente">Siguiente</string>
+    <string name="vRegistroPacienteBtnRegistrar">Registrar</string>
     <string name="vRegistroPacienteBtnRegresar">Regresar</string>
     <!-- Ventana de registro de sintomas-->
     <string name="vRegSintomaTitulo">Registro de sintomas</string>
@@ -50,7 +51,7 @@
     <string name="vRegSintomaTxtHora">Hora</string>
     <string name="vRegSintomaTxtIntensidad">Intensidad</string>
     <string name="vRegSintomaTxtFecha">Fecha</string>
-    <string name="vRegSintomaTxDetallesAdicionales">Detalles Adicioneles</string>
+    <string name="vRegSintomaTxDetallesAdicionales">Detalles Adicionales</string>
     <string name="vRegSintomaTxtBtnRegistrar">Registrar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <!--Opciones Doctores-->

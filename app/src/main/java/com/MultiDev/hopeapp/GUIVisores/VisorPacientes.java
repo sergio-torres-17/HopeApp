@@ -15,6 +15,8 @@ import com.MultiDev.hopeapp.WebService.Medicos.RequestList;
 import com.android.volley.Response;
 
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,7 +83,8 @@ public class VisorPacientes extends Fragment {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty() && !response.equals("0")){
-                   pacientes = ToolJson.convertirJsonListaPacientes(response);
+                    System.out.println("Respuesta: "+response);
+                    pacientes = ToolJson.convertirJsonListaPacientes(response);
                     if(pacientes.size()>0){
                         adaptador = new AdaptadorTarjeta(pacientes);
                         recyclerView.setAdapter(adaptador);

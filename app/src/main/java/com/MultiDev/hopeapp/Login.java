@@ -16,9 +16,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.MultiDev.hopeapp.GUIRegistros.VentanaRegistroUno;
+import com.MultiDev.hopeapp.WebService.Herramientas.ToolJson;
 import com.MultiDev.hopeapp.WebService.Medicos.RequestList;
 import com.MultiDev.hopeapp.WebService.Objetos.ObjRespuestaWS;
 import com.android.volley.Response;
+
+import org.json.JSONArray;
 
 import java.security.PrivateKey;
 
@@ -30,6 +33,7 @@ public class Login extends AppCompatActivity {
     private Animation anim1, anim2;
     private CheckBox chkPass;
     private ObjRespuestaWS respuesta;
+    private String infoUsuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +67,19 @@ public class Login extends AppCompatActivity {
         this.btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(validarCampos()){
 
+
+                if(validarCampos()){
+                    new com.MultiDev.hopeapp.WebService.Genericos.RequestList(Login.this).traerInfoPosLogin(txtUser.getText().toString(), new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if(!response.equals("0")&&!response.isEmpty()){
+                                System.out.println("Respuesta Pos login "+response);
+                                infoUsuario = new ToolJson().infoFragmentada(response,new String[]{"id_usuario","IdDoctor","nombre","apellidos","Edad","cedula","Estatus","Email"});
+                            }
+                        }
+                    });
+                    loginMaestro();
                 }else{
                     AlertDialog.Builder ad = new AlertDialog.Builder(Login.this);
                     ad.setTitle("Campos Vacíos");
@@ -97,15 +112,16 @@ public class Login extends AppCompatActivity {
                 if(!response.isEmpty()){
                     respuesta = new ObjRespuestaWS(response, Login.this);
                     if(respuesta.isStatus()){
-                        if(respuesta.isStatus()) {
-                            respuesta.mostrarRespuesta("¡Bienveido!", "Entrar", new DialogInterface.OnClickListener() {
+
+                            respuesta.mostrarRespuesta("¡Bienvenido!", "Entrar", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    startActivity(new Intent(Login.this, MainActivity.class));
+                                    Intent intent = new Intent(Login.this, MainActivity.class);
+                                    intent.putExtra("infoUsuario", infoUsuario);
+                                    startActivity(intent);
                                     finish();
                                 }
                             });
-                        }
                     }else{
                         respuesta.mostrarRespuesta("¡Algo salió Mal!", "Ok");
                     }

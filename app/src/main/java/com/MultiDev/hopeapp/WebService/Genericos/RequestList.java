@@ -42,9 +42,29 @@ public class RequestList {
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.getCache().clear();
         requestQueue.add(peticion);
     }
     private void verTipoDeUsuario(){
-        StringRequest peticion = new StringRequest(Request.Method.GET,ConstantesURL.)
+        //StringRequest peticion = new StringRequest(Request.Method.GET,ConstantesURL.)
+    }
+    public void traerInfoPosLogin(String correo,Response.Listener<String> frm){
+        StringRequest request = new StringRequest(Request.Method.POST, ConstantesURL.R_TRAER_INFO_POS_LOGIN, frm, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> prm = new HashMap<>();
+                prm.put("email",correo);
+                return prm;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.getCache().clear();
+        requestQueue.add(request);
     }
 }

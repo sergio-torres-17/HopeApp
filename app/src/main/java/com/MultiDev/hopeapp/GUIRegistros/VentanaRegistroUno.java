@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,8 @@ import com.MultiDev.hopeapp.GUIRegistros.Doctores.RegistroDoctor;
 import com.MultiDev.hopeapp.GUIRegistros.Pacientes.RegistroPaciente;
 import com.MultiDev.hopeapp.Objetos.Usuario;
 import com.MultiDev.hopeapp.R;
+import com.MultiDev.hopeapp.WebService.Genericos.RequestList;
+import com.android.volley.Response;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -111,7 +114,7 @@ public class VentanaRegistroUno extends AppCompatActivity {
 
     public void autenticacionGoogle(){
         GoogleSignInOptions bu = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("933262354310-o5pqun9rlh3iegv4mudi83l9sr1dk9c0.apps.googleusercontent.com")
+                .requestIdToken(getString(R.string.firmaGoogleHopeapp))
                 .requestEmail()
                 .build();
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(VentanaRegistroUno.this, bu);
@@ -128,8 +131,7 @@ public class VentanaRegistroUno extends AppCompatActivity {
                 if(cuenta !=null){
                     AuthCredential credencial = GoogleAuthProvider.getCredential(cuenta.getIdToken(),null);
                     FirebaseAuth.getInstance().signInWithCredential(credencial);
-                    mostrarCuadroEdad(cuenta.getGivenName(), cuenta.getFamilyName(), cuenta.getEmail());
-
+                    mostrarCuadroEdad(cuenta.getGivenName(), cuenta.getFamilyName(), cuenta.getEmail(),cuenta.getId());
                 }
             }catch (Exception e){
                 Toast.makeText(VentanaRegistroUno.this , "Algo salió mal, intenta nuevamente", Toast.LENGTH_SHORT).show();
@@ -150,24 +152,36 @@ public class VentanaRegistroUno extends AppCompatActivity {
         }
     }
 
-    private void mostrarCuadroEdad(String nombre, String apellidos, String correo){
+    private void mostrarCuadroEdad(String nombre, String apellidos, String correo,String password){
         EditText txtEdad = new EditText(VentanaRegistroUno.this);
-
+        txtEdad.setInputType(InputType.TYPE_CLASS_NUMBER);
         AlertDialog.Builder cuadrito= new AlertDialog.Builder(VentanaRegistroUno.this);
         cuadrito.setTitle("Introduce tu edad");
         cuadrito.setView(txtEdad);
         cuadrito.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if(esDoctor){
-                    Intent intent = new Intent(VentanaRegistroUno.this, RegistroDoctor.class);
-                    intent.putExtra("usrTxt", nombre+","+apellidos+","+correo);
-                    startActivity(intent);
-                }else{
-                    Intent intent = new Intent(VentanaRegistroUno.this, RegistroPaciente.class);
-                    intent.putExtra("usrTxt", nombre+","+apellidos+","+correo);
-                    startActivity(intent);
-                }
+             new RequestList(VentanaRegistroUno.this).validarExistenciaDeUsuario(nombre, apellidos, correo, new Response.Listener<String>() {
+                 @Override
+                 public void onResponse(String response) {
+                    if(!response.isEmpty()&&!response.equals("0")){
+                        if(!txtEdad.getText().toString().equals("")){
+                            if(esDoctor){
+                                Intent intent = new Intent(VentanaRegistroUno.this, RegistroDoctor.class);
+                                intent.putExtra("usrTxt", nombre+","+apellidos+","+txtEdad.getText().toString()+","+correo+","+password);
+                                startActivity(intent);
+                            }else{
+                                Intent intent = new Intent(VentanaRegistroUno.this, RegistroPaciente.class);
+                                intent.putExtra("usrTxt", nombre+","+apellidos+","+txtEdad.getText().toString()+","+correo+","+password);
+                                startActivity(intent);
+                            }
+                        }else
+                            Toast.makeText(VentanaRegistroUno.this, "Por favor, introduce una edad valida", Toast.LENGTH_SHORT).show();
+                    }
+                 }
+             });
+
+
             }
         });
         cuadrito.show();

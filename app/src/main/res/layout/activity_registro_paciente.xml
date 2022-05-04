@@ -74,7 +74,19 @@
             android:hint="@string/vRegistroPacienteTxtSintomasPrevios"
             android:inputType="textMultiLine"
             android:textColorHint="@color/colorHint" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <ImageButton
+                android:id="@+id/imgFotoRegPaciente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:src="@drawable/camarita_2"/>
+
+        </LinearLayout>
         <Button
             android:id="@+id/BtnRegDoctSiguiente"
             android:layout_width="match_parent"
@@ -83,7 +95,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/bordes_redondeados_btn"
-            android:text="@string/vRegistroPacienteBtnSiguiente"
+            android:text="@string/vRegistroPacienteBtnRegistrar"
             android:textColor="#FFF"
             android:textSize="12sp" />
 

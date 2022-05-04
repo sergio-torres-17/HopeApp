@@ -88,33 +88,34 @@
                     android:textColorHint="@color/colorHint"
                     android:inputType="textPersonName"
                     android:paddingLeft="5dp" />
+
                 <EditText
                     android:id="@+id/vRegistroGenEdtPwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@android:color/darker_gray"
                     android:drawableLeft="@drawable/icon_lock"
-                    android:hint="@string/vRegistroGenTxtContraseña"
+                    android:layout_marginTop="20dp"
                     android:textColorHint="@color/colorHint"
-                    android:inputType="textPersonName"
-                    android:paddingLeft="5dp" />
+                    android:hint="@string/vRegistroGenTxtContraseña"
+                    android:paddingLeft="5dp"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+
                 <EditText
                     android:id="@+id/vRegistroGenEdtPwdConf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@android:color/darker_gray"
                     android:drawableLeft="@drawable/icon_lock"
                     android:hint="@string/vRegistroGenTxtConfContraseña"
+                    android:paddingLeft="5dp"
                     android:textColorHint="@color/colorHint"
-                    android:inputType="textPersonName"
-                    android:paddingLeft="5dp" />
-
+                    android:layout_marginTop="20dp"
+                    android:ems="10"
+                    android:inputType="textPassword" />
             </LinearLayout>
             <Button
                 android:id="@+id/btnRegGenSiguiente"

@@ -56,4 +56,21 @@ public class ToolJson{
         }
         return dev;
     }
+    public String infoFragmentada(String json, String[] etiquetas){
+        String dev = "";
+        JSONObject auxObj = null;
+        try{
+            auxObj = new JSONArray(json).getJSONObject(0);
+            for (int i = 0;i<etiquetas.length; i++){
+                if(i == etiquetas.length-1){
+                    dev += auxObj.getString(etiquetas[i]) ;
+                }else{
+                    dev += auxObj.getString(etiquetas[i])+",";
+                }
+            }
+        }catch(Exception e){
+            System.err.println("Error al fragmentar la informacion "+e.getMessage());
+        }
+        return dev;
+    }
 }

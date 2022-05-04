@@ -13,6 +13,6 @@ public class RegistroPaciente extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_paciente);
-        usr = new Usuario(getIntent().getExtras().getString("usrTxt").split(","));
+        //usr = new Usuario(getIntent().getExtras().getString("usrTxt").split(","));
     }
 }
