@@ -21,7 +21,6 @@ public class ObjRespuestaWS {
     }
     public ObjRespuestaWS(String json, Context context) {
         int resp;
-        System.out.println("JSON Recibido "+json);
         JSONObject auxJson = new ToolJson().convertStrJSON(json);
 
         try {
