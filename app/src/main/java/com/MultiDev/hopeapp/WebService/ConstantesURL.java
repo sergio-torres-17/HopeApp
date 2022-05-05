@@ -8,7 +8,7 @@ public class ConstantesURL {
     //Direccion Backend Productivo
     public static final String UR_WS_PRODUCTIVO = "https://multicodemx.com/hopeapp/PRD/Request/";
 
-    public static final String URL_WS = URL_WS_LOCAL;
+    public static final String URL_WS = UR_WS_PRUEBAS;
     /*************PETICIONES DOCTORES**************/
     public static final String URL_WS_DOCTORES = URL_WS;
     public static final String R_REGISTRO_DOCTORES = URL_WS_DOCTORES+"InsertarDoctor.php";

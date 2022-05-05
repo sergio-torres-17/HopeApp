@@ -25,7 +25,7 @@ public class ObjRespuestaWS {
         JSONObject auxJson = new ToolJson().convertStrJSON(json);
 
         try {
-            resp = auxJson.getInt("Rsp");
+             resp = auxJson.getInt("Rsp");
             this.status = (resp==1);
             this.mensaje = auxJson.getString("Msg");
         } catch (JSONException e) {
