@@ -42,4 +42,14 @@
         android:name="com.MultiDev.hopeapp.MiCuenta"
         android:label="Mi cuenta"
         tools:layout="@layout/fragment_mi_cuenta" />
+    <fragment
+        android:id="@+id/opcSalir"
+        android:name="com.MultiDev.hopeapp.FragmenSalir"
+        android:label="Saliendo"
+        tools:layout="@layout/fragment_fragmen_salir">
+        <action
+            android:id="@+id/action_opcSalir_self"
+            app:destination="@id/opcSalir"
+            app:enterAnim="@anim/introduce_fade" />
+    </fragment>
 </navigation>

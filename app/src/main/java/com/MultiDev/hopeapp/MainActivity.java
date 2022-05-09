@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.MultiDev.hopeapp.Objetos.Doctor;
+import com.MultiDev.hopeapp.Objetos.Paciente;
 import com.MultiDev.hopeapp.Objetos.Usuario;
 import com.google.android.material.navigation.NavigationView;
 
@@ -27,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private String nombre, puesto;
-    private boolean quiereSalir;
+    private boolean quiereSalir, esDoctor;
     private TextView txtNombre, txtPuesto;
     private Doctor doctor;
+    private Paciente paciente;
 
 
     @Override
@@ -41,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         System.out.println("Info Usuario"+getIntent().getExtras().getString("infoUsuario"));
-        this.doctor = new Doctor(getIntent().getExtras().getString("infoUsuario").split(","));
+        this.esDoctor = getIntent().getExtras().getBoolean("esDoctor");
+        if (esDoctor)
+            this.doctor = new Doctor(getIntent().getExtras().getString("infoUsuario").split(","));
+        else
+            this.paciente = new Paciente(getIntent().getExtras().getString("infoUsuario").split(","));
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -63,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
 
@@ -103,9 +109,11 @@ public class MainActivity extends AppCompatActivity {
     public void inicializarAppbar(){
         this.txtNombre = (TextView) findViewById(R.id.txtNavNombre);
         this.txtPuesto = (TextView)findViewById(R.id.txtNavPuesto);
-        this.txtNombre.setText(this.doctor.getUsuario().getNombre()+" "+this.doctor.getUsuario().getApellidos());
-        this.txtPuesto.setText("Doctor");
-
+        if(esDoctor)
+            this.txtNombre.setText(this.doctor.getUsuario().getNombre()+" "+this.doctor.getUsuario().getApellidos());
+        else
+            this.txtNombre.setText(this.paciente.getUsr().getNombre()+" "+this.paciente.getUsr().getApellidos());
+        this.txtPuesto.setText((this.esDoctor)?"Doctor":"Paciente");
     }
 
 }

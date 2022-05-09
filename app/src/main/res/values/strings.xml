@@ -45,6 +45,8 @@
     <string name="vRegistroPacienteTxtSintomasPrevios">Sintomas previos (Uno por linea)</string>
     <string name="vRegistroPacienteBtnRegistrar">Registrar</string>
     <string name="vRegistroPacienteBtnRegresar">Regresar</string>
+    <string name="vRegistroPacienteBtnFotoPefil">Seleccionar Foto...</string>
+    <string name="vRegistroPacienteBtnFotoExpediente">Seleccionar expediente..</string>
     <!-- Ventana de registro de sintomas-->
     <string name="vRegSintomaTitulo">Registro de sintomas</string>
     <string name="vRegSintomaTxtSintoma">Sintoma</string>
@@ -67,5 +69,6 @@
     <!--Opciones Genericas -->
     <string name="opcMenuGenMiCuenta">Mi cuenta</string>
     <string name="opcMenuGenSalir">Salir</string>
+    <string name="preferences_file_key">SessionSaved</string>
 
 </resources>

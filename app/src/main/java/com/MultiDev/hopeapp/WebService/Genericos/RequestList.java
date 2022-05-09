@@ -1,6 +1,7 @@
 package com.MultiDev.hopeapp.WebService.Genericos;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -45,8 +46,24 @@ public class RequestList {
         requestQueue.getCache().clear();
         requestQueue.add(peticion);
     }
-    private void verTipoDeUsuario(){
-        //StringRequest peticion = new StringRequest(Request.Method.GET,ConstantesURL.)
+    public void verTipoDeUsuario(String usr,Response.Listener<String> escuchador){
+        StringRequest peticion = new StringRequest(Request.Method.POST, ConstantesURL.R_VER_TIPOS_USUARIOS, escuchador, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "Error al hacer la peticion "+error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> prm = new HashMap<>();
+                prm.put("usr",usr);
+                return prm;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(this.context);
+        queue.getCache().clear();
+        queue.add(peticion);
     }
     public void traerInfoPosLogin(String correo,Response.Listener<String> frm){
         StringRequest request = new StringRequest(Request.Method.POST, ConstantesURL.R_TRAER_INFO_POS_LOGIN, frm, new Response.ErrorListener() {

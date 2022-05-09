@@ -73,4 +73,36 @@ public class ToolJson{
         }
         return dev;
     }
+    public String[] listarTiposCancer(String json){
+        String[] dev = null;
+        JSONArray arr;
+        JSONObject obj;
+        try {
+            arr = new JSONArray(json);
+            dev = new String[arr.length()];
+            for (int in = 0; in<arr.length();in++){
+                obj = arr.getJSONObject(in);
+                dev[in] = (obj.getString("tipo"));
+            }
+        } catch (JSONException e) {
+            System.err.println("Error al convertir json a lista tipos "+e.getMessage());
+        }
+        return dev;
+    }
+    public String[] listarEtapasCancer(String json){
+        String[] dev = null;
+        JSONArray arr;
+        JSONObject obj;
+        try {
+            arr = new JSONArray(json);
+            dev = new String[arr.length()];
+            for (int in = 0; in<arr.length();in++){
+                obj = arr.getJSONObject(in);
+                dev[in] = (obj.getString("etapa"));
+            }
+        } catch (JSONException e) {
+            System.err.println("Error al convertir json a lista etapas: "+e.getMessage());
+        }
+        return dev;
+    }
 }

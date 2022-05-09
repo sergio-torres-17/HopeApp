@@ -8,7 +8,7 @@ public class ConstantesURL {
     //Direccion Backend Productivo
     public static final String UR_WS_PRODUCTIVO = "https://multicodemx.com/hopeapp/PRD/Request/";
 
-    public static final String URL_WS = UR_WS_PRUEBAS;
+    public static final String URL_WS = URL_WS_LOCAL;
     /*************PETICIONES DOCTORES**************/
     public static final String URL_WS_DOCTORES = URL_WS;
     public static final String R_REGISTRO_DOCTORES = URL_WS_DOCTORES+"InsertarDoctor.php";
@@ -20,14 +20,16 @@ public class ConstantesURL {
     public static final String R_VALIDACION_EXISTENCIA_USUARIO = URL_WS_DOCTORES+"ValidacionExistenciaUsuario.php";
     public static final String R_VER_PACIENTES_SIN_TUTELA = URL_WS_DOCTORES+"VerPacientesSinTutela.php";
     /*************************PETICIONES PACIENTES**************************/
-    public static final String URL_WS_PACIENTES = URL_WS+"/";
+    public static final String URL_WS_PACIENTES = URL_WS;
+    public static final String R_TRAER_INFO_POS_LOGIN_PACIENTES = URL_WS_PACIENTES+"TraerInfoPosLoginPacientes.php";
+    public static final String R_LOGIN_PACIENTES = URL_WS_PACIENTES+"LoginPacientes.php";
     public static final String R_INSERTAR_PACIENTE =URL_WS_PACIENTES+"InsertarPaciente.php";
     public static final String R_MOSTRAR_ETAPAS_CANCER = URL_WS_PACIENTES+"MostrarEtapasCancer.php";
     public static final String R_MOSTRAR_TIPOS_CANCER = URL_WS_PACIENTES+"MostrarTiposCancer.php";
     /************************Peticiones GENERTICAS**************************/
-    public static final String URL_WS_GENERICAS = URL_WS+"/";
+    public static final String URL_WS_GENERICAS = URL_WS;
     public static final String R_VALIDAR_EXISTENCIA_USUARIO = URL_WS_GENERICAS+"ValidacionExistenciaUsuario.php";
-    public static final String R_VER_TIPOS_USUARIOS = URL_WS_GENERICAS+"BuscarTipoUsuario.php";
+    public static final String R_VER_TIPOS_USUARIOS = URL_WS_GENERICAS+"VerTipoUsuario.php";
 
 
 }

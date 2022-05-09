@@ -9,7 +9,7 @@
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/activity_main.xml" value="0.3625" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/activity_registro_doctor.xml" value="0.25" />
-        <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/activity_registro_paciente.xml" value="0.3625" />
+        <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/activity_registro_paciente.xml" value="0.33" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/activity_registro_sintomas.xml" value="0.3625" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/activity_splash.xml" value="0.358695652173913" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/activity_test_visor.xml" value="0.3625" />
@@ -17,11 +17,13 @@
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/activity_ventana_registro_uno.xml" value="0.33" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/app_bar_main.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/content_main.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_fragmen_salir.xml" value="0.26197916666666665" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_gallery.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_historial_sintomas.xml" value="0.333786231884058" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_home.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_mi_cuenta.xml" value="0.333786231884058" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_mi_progreso.xml" value="0.333786231884058" />
+        <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_opc_salir.xml" value="0.26197916666666665" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_slideshow.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_visor_pacientes.xml" value="0.3625" />
         <entry key="..\:/Users/SERGIO/AndroidStudioProjects/HopeApp/app/src/main/res/layout/fragment_visor_sintomas_paciente.xml" value="0.3625" />

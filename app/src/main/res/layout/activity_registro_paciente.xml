@@ -5,111 +5,163 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GUIRegistros.Pacientes.RegistroPaciente">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        >
-
-        <TextView
-            android:id="@+id/txtTituloRegistroGen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:fontFamily="@font/abel"
-            android:text="@string/vRegistroPacienteTxtTitulo"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:textStyle="italic|bold" />
-        <EditText
-            android:id="@+id/edtVRegPaienteEspecialidad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:drawableLeft="@drawable/icon_email"
-            android:hint="@string/vRegistroPacienteTxtTipoCnacer"
-            android:textColorHint="@color/colorHint"
-            android:inputType="textPersonName"
-            android:paddingLeft="5dp" />
-        <EditText
-            android:id="@+id/edtVRegPaienteCedula"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:drawableLeft="@drawable/icon_email"
-            android:hint="@string/vRegistroPacienteTxtTiempoDiag"
-            android:textColorHint="@color/colorHint"
-            android:inputType="textPersonName"
-            android:paddingLeft="5dp" />
-        <EditText
-            android:id="@+id/edtVRegPaienteFecha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:drawableLeft="@drawable/icon_email"
-            android:hint="@string/vRegistroPacienteTxtEtapaCancer"
-            android:textColorHint="@color/colorHint"
-            android:inputType="textPersonName"
-            android:paddingLeft="5dp" />
-        <EditText
-            android:id="@+id/edtVRegPaienteExperiencia"
-            android:layout_width="match_parent"
-            android:layout_height="117dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="@string/vRegistroPacienteTxtSintomasPrevios"
-            android:inputType="textMultiLine"
-            android:textColorHint="@color/colorHint" />
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            >
 
-            <ImageButton
-                android:id="@+id/imgFotoRegPaciente"
+            <TextView
+                android:id="@+id/txtTituloRegistroGen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
-                android:src="@drawable/camarita_2"/>
+                android:layout_marginBottom="25dp"
+                android:fontFamily="@font/abel"
+                android:text="@string/vRegistroPacienteTxtTitulo"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="italic|bold" />
+            <AutoCompleteTextView
+                android:id="@+id/edtVRegPacienteTipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:completionThreshold="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@android:color/darker_gray"
+                android:drawableLeft="@drawable/icon_email"
+                android:hint="@string/vRegistroPacienteTxtTipoCnacer"
+                android:textColorHint="@color/colorHint"
+                android:inputType="textPersonName"
+                android:singleLine="true"
+                android:paddingLeft="5dp" />
+            <EditText
+                android:id="@+id/edtVRegPacienteTiempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@android:color/darker_gray"
+                android:drawableLeft="@drawable/icon_email"
+                android:hint="@string/vRegistroPacienteTxtTiempoDiag"
+                android:textColorHint="@color/colorHint"
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp" />
+            <AutoCompleteTextView
+                android:id="@+id/edtVRegPacienteEtapa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:completionThreshold="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@android:color/darker_gray"
+                android:drawableLeft="@drawable/icon_email"
+                android:hint="@string/vRegistroPacienteTxtEtapaCancer"
+                android:singleLine="true"
+                android:textColorHint="@color/colorHint"
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp" />
+            <EditText
+                android:id="@+id/edtVRegPacienteSintomas"
+                android:layout_width="match_parent"
+                android:layout_height="117dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/vRegistroPacienteTxtSintomasPrevios"
+                android:inputType="textMultiLine"
+                android:textColorHint="@color/colorHint" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="98dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/colorHint"
+                        android:layout_marginRight="10dp"
+                        android:text="Foto de perfil"
+                        android:textSize="15dp"
+                        android:textAlignment="inherit" />
+
+                    <Button
+                        android:id="@+id/btnVRegPacienteFotoPerfil"
+                        android:layout_width="match_parent"
+                        android:textColor="#FFF"
+                        android:background="@drawable/bordes_redondeados_btn"
+                        android:layout_height="match_parent"
+                        android:text="@string/vRegistroPacienteBtnFotoPefil" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="98dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/colorHint"
+                        android:layout_marginRight="10dp"
+                        android:text="Foto de expediente"
+                        android:textSize="15dp"
+                        android:textAlignment="inherit" />
+
+                    <Button
+                        android:id="@+id/btnVRegPacienteFotoExp"
+                        android:layout_width="match_parent"
+                        android:textColor="#FFF"
+                        android:background="@drawable/bordes_redondeados_btn"
+                        android:layout_height="match_parent"
+                        android:text="@string/vRegistroPacienteBtnFotoExpediente" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/BtnRegPacienteRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bordes_redondeados_btn"
+                android:text="@string/vRegistroPacienteBtnRegistrar"
+                android:textColor="#FFF"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/BtnRegPactRegresar"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bordes_redondeados_btn"
+                android:text="@string/vRegistroPacienteBtnRegresar"
+                android:textColor="#FFF"
+                android:textSize="12sp" />
 
         </LinearLayout>
-        <Button
-            android:id="@+id/BtnRegDoctSiguiente"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/bordes_redondeados_btn"
-            android:text="@string/vRegistroPacienteBtnRegistrar"
-            android:textColor="#FFF"
-            android:textSize="12sp" />
-
-        <Button
-            android:id="@+id/BtnRegDoctRegresar"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/bordes_redondeados_btn"
-            android:text="@string/vRegistroPacienteBtnRegresar"
-            android:textColor="#FFF"
-            android:textSize="12sp" />
-
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

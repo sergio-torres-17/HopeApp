@@ -36,6 +36,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -215,16 +216,18 @@ public class VentanaRegistroGen extends AppCompatActivity {
         new RequestList(VentanaRegistroGen.this).validarExistenciaDeUsuario(txtNombre.getText().toString(), txtApellidos.getText().toString(), txtEmail.getText().toString(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(!response.isEmpty() && !response.equals("0")){
-                    System.out.println("Respuesta de la peticion "+response);
-                    JSONObject res = ToolJson.extraerSolUnElemento(response);
-                    int code = -1;
+                if(!response.isEmpty() ){
+                    System.out.println("Respuesta del server "+response);
+                    boolean existe = false;
                     try {
-                        code =res.getInt("Existe");
-                    } catch (JSONException e) {
-                        System.err.println(e.getMessage());
+                        JSONArray arr = new JSONArray(response);
+                        JSONObject object = arr.getJSONObject(0);
+                        existe = object.getBoolean("respuesta");
+                    }catch (Exception e){
+                        System.err.println("Error del JSON "+e.getMessage());
                     }
-                    if(code==0){
+
+                    if(!existe){
                         btnSiguiente.setEnabled(true);
                         Toast.makeText(VentanaRegistroGen.this, "El usuario es valido para ser registrado", Toast.LENGTH_SHORT).show();
                     }
@@ -237,12 +240,9 @@ public class VentanaRegistroGen extends AppCompatActivity {
         });
     }
     private void rutinaSecundariaValidacion(){
-        if(validacionCampos()){
+        if(validacionCampos())
             validarUsuarioExistente();
-        }
-        else{
+        else
             this.btnSiguiente.setEnabled(false);
-        }
-
     }
 }
