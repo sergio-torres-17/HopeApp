@@ -4,9 +4,15 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
 import com.MultiDev.hopeapp.Objetos.AdaptadorTarjeta;
 import com.MultiDev.hopeapp.Objetos.Paciente;
 import com.MultiDev.hopeapp.R;
@@ -28,6 +34,8 @@ import java.util.List;
 public class VisorPacientes extends Fragment {
     private View view;
     private RecyclerView recyclerView;
+    private EditText edtNombrePaciente;
+    private Button btnBuscar;
     private AdaptadorTarjeta adaptador;
     private List<Paciente> pacientes;
 
@@ -76,8 +84,7 @@ public class VisorPacientes extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_visor_pacientes, container, false);
         recyclerView = view.findViewById(R.id.rcVisPacientes);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        pacientes = new ArrayList<>();
+        inicializarObjetos();
 
         new RequestList(view.getContext()).mostrarPacientes(new Response.Listener<String>() {
             @Override
@@ -92,10 +99,49 @@ public class VisorPacientes extends Fragment {
                 }
             }
         });
-
-
-
+        inicializarEventos();
         return view;
     }
+    public void inicializarObjetos(){
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        pacientes = new ArrayList<>();
+        edtNombrePaciente = view.findViewById(R.id.edtNombreBusquedaPaciente);
+        btnBuscar = view.findViewById(R.id.btnBuscarPaciente);
+    }
+    private void inicializarEventos(){
+        btnBuscar.setOnClickListener(view -> new RequestList(view.getContext()).mostrarPacientes(new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(!response.isEmpty() && !response.equals("0")){
+                    System.out.println("Respuesta: "+response);
+                    pacientes = ToolJson.convertirJsonListaPacientes(response);
+                    if(pacientes.size()>0){
+                        adaptador = new AdaptadorTarjeta(pacientes);
+                        recyclerView.setAdapter(adaptador);
+                    }
+                }
+            }
+        }));
+        edtNombrePaciente.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(edtNombrePaciente.getText().length()>0){
+                    btnBuscar.setText("Buscar");
+                }else
+                    btnBuscar.setText("Actualizar");
+            }
+        });
+    }
+
 
 }
