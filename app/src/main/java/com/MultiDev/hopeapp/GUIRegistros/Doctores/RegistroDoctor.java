@@ -24,6 +24,7 @@ import com.MultiDev.hopeapp.Objetos.Usuario;
 import com.MultiDev.hopeapp.R;
 import com.MultiDev.hopeapp.WebService.Medicos.RequestList;
 import com.MultiDev.hopeapp.WebService.Objetos.ObjRespuestaWS;
+import com.MultiDev.hopeapp.WebService.ToolsFirebase.FireDb;
 import com.android.volley.Response;
 
 import java.sql.SQLOutput;
@@ -112,6 +113,7 @@ public class RegistroDoctor extends AppCompatActivity {
                         respuesta = new ObjRespuestaWS(response, RegistroDoctor.this);
                         AlertDialog.Builder builder = new AlertDialog.Builder(RegistroDoctor.this);
                         if (respuesta.isStatus()){
+                            new FireDb(usuario.getNombre()+" "+usuario.getApellidos()).crearColeccionDoctor();
                             builder.setTitle("Registro completo");
                             builder.setMessage(respuesta.getMensaje()+"\nLa aplicación se reiniciará.");
                             builder.setPositiveButton("Aceptar ", new DialogInterface.OnClickListener() {

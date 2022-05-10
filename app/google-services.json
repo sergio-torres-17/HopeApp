@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "933262354310-32s891ifhpvrv2hl6pbrpkkbbjrv83sq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.MultiDev.hopeapp",
+            "certificate_hash": "bb3d9bde1519a28bb56dfd4e3528d13ccce5aace"
+          }
+        },
+        {
           "client_id": "933262354310-o5pqun9rlh3iegv4mudi83l9sr1dk9c0.apps.googleusercontent.com",
           "client_type": 3
         }

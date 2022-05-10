@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.MultiDev.hopeapp.Herramientas.HerramientasRed;
 import com.MultiDev.hopeapp.Objetos.Sesion;
 import com.MultiDev.hopeapp.WebService.Herramientas.ControlSesiones;
+import com.MultiDev.hopeapp.WebService.ToolsFirebase.FireDb;
 
 public class Splash extends AppCompatActivity {
     private TextView txt1,txt2;
@@ -26,6 +27,7 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+
         controlSesiones = new ControlSesiones(Splash.this);
         System.out.println("Valor del usuario guardado "+controlSesiones.leerSesion().getUsuario());
         inicializarObjetos();

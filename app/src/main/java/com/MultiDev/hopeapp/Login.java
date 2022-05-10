@@ -151,6 +151,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty()){
+                    System.err.println("Respuesta Login "+response);
                     respuesta = new ObjRespuestaWS(response, Login.this);
                     if(respuesta.isStatus()){
 
@@ -249,6 +250,7 @@ public class Login extends AppCompatActivity {
         new com.MultiDev.hopeapp.WebService.Genericos.RequestList(Login.this).verTipoDeUsuario(correo, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                System.err.println("Respuesta "+response);
                 if(!response.equals("0")&&!response.isEmpty()){
                     try {
                         JSONObject object = new JSONArray(response).getJSONObject(0);
@@ -265,6 +267,12 @@ public class Login extends AppCompatActivity {
                                 //Login doctor
                                 esDoctor = false;
                                 loginPacientes();
+                                break;
+                            }
+                            case "No existe":{
+                                //Login doctor
+                                esDoctor = false;
+                                Toast.makeText(Login.this, "El usuario no existe", Toast.LENGTH_SHORT).show();
                                 break;
                             }
                         }

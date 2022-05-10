@@ -29,5 +29,8 @@ public class RegistroSintomas extends AppCompatActivity {
         this.edtDetalles = findViewById(R.id.vRegSintEdtDetalles);
         this.btRegisrar = findViewById(R.id.BtnRegSintBtnRegistrar);
     }
+    private void inicializarEventos(){
+
+    }
 
 }

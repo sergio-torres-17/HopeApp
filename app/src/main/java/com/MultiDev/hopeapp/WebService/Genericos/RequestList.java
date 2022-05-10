@@ -50,7 +50,7 @@ public class RequestList {
         StringRequest peticion = new StringRequest(Request.Method.POST, ConstantesURL.R_VER_TIPOS_USUARIOS, escuchador, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "Error al hacer la peticion "+error.getMessage(), Toast.LENGTH_LONG).show();
+                System.err.println("Error info pos login "+error.getMessage());
             }
         }){
             @Nullable
@@ -69,7 +69,7 @@ public class RequestList {
         StringRequest request = new StringRequest(Request.Method.POST, ConstantesURL.R_TRAER_INFO_POS_LOGIN, frm, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                System.err.println("Error info pos login "+error.getMessage());
             }
         }){
             @Nullable
