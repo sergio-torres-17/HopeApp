@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ToolsTipos <T>{
-    public ArrayList<T> listarElementosPorPetición(String json, String[] etiquetas){
+    public ArrayList<T> listarElementosPorPeticion(String json, String[] etiquetas){
         ArrayList<T> dev = new ArrayList<>();
         JSONArray arr;
         JSONObject obj;
@@ -16,7 +16,7 @@ public class ToolsTipos <T>{
             for (int in = 0; in<arr.length();in++){
                 obj = arr.getJSONObject(in);
                 for (int i = 0; i<etiquetas.length;i++){
-                    //dev.add((T) new T(obj.getString("")));
+                    dev.add((T)obj.getString(etiquetas[i]));
                 }
             }
 

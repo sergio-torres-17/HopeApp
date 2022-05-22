@@ -21,6 +21,7 @@ import org.json.JSONArray;
 
 import java.nio.file.ProviderMismatchException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -107,5 +108,26 @@ public class RequestList {
         fila.getCache().clear();
         fila.add(request);
 
+    }
+    public void InsertarTutela(Response.Listener<String> response, String nombreMedico, String nombrePaciente){
+        StringRequest request = new StringRequest(Request.Method.POST,ConstantesURL.R_INSERTAR_TUTELA_PARA_PACIENTE,response, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Error al solicitar pacientes " + error.getCause());
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> prm = new HashMap<>();
+                prm.put("nombreDoctor",nombreMedico);
+                prm.put("nombrePaciente",nombrePaciente);
+                prm.put("fechaHora",new Date(System.currentTimeMillis()).toString());
+                return prm;
+            }
+        };
+        RequestQueue fila = Volley.newRequestQueue(this.context);
+        fila.getCache().clear();
+        fila.add(request);
     }
 }

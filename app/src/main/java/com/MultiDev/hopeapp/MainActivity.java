@@ -1,14 +1,14 @@
 package com.MultiDev.hopeapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.MultiDev.hopeapp.Herramientas.ServicioNotificacion;
 import com.MultiDev.hopeapp.Objetos.Doctor;
 import com.MultiDev.hopeapp.Objetos.Paciente;
-import com.MultiDev.hopeapp.Objetos.Usuario;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Doctor doctor;
     private Paciente paciente;
 
-
+    private ServicioNotificacion servicioNotificación;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +42,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarMain.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        System.out.println("Info Usuario"+getIntent().getExtras().getString("infoUsuario"));
         this.esDoctor = getIntent().getExtras().getBoolean("esDoctor");
-        if (esDoctor)
+
+        if (esDoctor){
             this.doctor = new Doctor(getIntent().getExtras().getString("infoUsuario").split(","));
+            Intent intent = new Intent(MainActivity.this, ServicioNotificacion.class);
+            intent.putExtra("nombreCompleto",this.doctor.getUsuario().getNombre()+" "+this.doctor.getUsuario().getApellidos());
+            startService(intent);
+        }
         else
             this.paciente = new Paciente(getIntent().getExtras().getString("infoUsuario").split(","));
 

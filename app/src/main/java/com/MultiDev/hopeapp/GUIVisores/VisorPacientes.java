@@ -90,10 +90,9 @@ public class VisorPacientes extends Fragment {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty() && !response.equals("0")){
-                    System.out.println("Respuesta: "+response);
                     pacientes = ToolJson.convertirJsonListaPacientes(response);
                     if(pacientes.size()>0){
-                        adaptador = new AdaptadorTarjeta(pacientes);
+                        adaptador = new AdaptadorTarjeta(pacientes, getContext());
                         recyclerView.setAdapter(adaptador);
                     }
                 }
@@ -116,7 +115,7 @@ public class VisorPacientes extends Fragment {
                     System.out.println("Respuesta: "+response);
                     pacientes = ToolJson.convertirJsonListaPacientes(response);
                     if(pacientes.size()>0){
-                        adaptador = new AdaptadorTarjeta(pacientes);
+                        adaptador = new AdaptadorTarjeta(pacientes, getContext());
                         recyclerView.setAdapter(adaptador);
                     }
                 }

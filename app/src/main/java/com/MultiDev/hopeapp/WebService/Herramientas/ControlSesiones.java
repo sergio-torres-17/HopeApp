@@ -16,7 +16,7 @@ public class ControlSesiones {
         this.act = act;
         this.preferences = act.getSharedPreferences(act.getString(R.string.preferences_file_key),Context.MODE_PRIVATE);
     }
-    public void guardarSesion(String usuario, boolean esDoctor, String infoFragmentada){
+    public void  guardarSesion(String usuario, boolean esDoctor, String infoFragmentada){
         editor = preferences.edit();
         editor.putString("usr", usuario);
         editor.putBoolean("esDoctor",esDoctor);

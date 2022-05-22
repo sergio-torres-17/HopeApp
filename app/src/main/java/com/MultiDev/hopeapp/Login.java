@@ -40,6 +40,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.security.PrivateKey;
+import java.util.Date;
 
 public class Login extends AppCompatActivity {
     private EditText txtUser, txtPass;
@@ -49,9 +50,10 @@ public class Login extends AppCompatActivity {
     private Animation anim1, anim2;
     private CheckBox chkPass;
     private ObjRespuestaWS respuesta;
-    private boolean esDoctor;
+    private boolean esDoctor,esGoogle;
     private String infoUsuario;
     private static final int GOOGLE_SIGN_IN = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,8 @@ public class Login extends AppCompatActivity {
         this.inicializarValores();
         this.animar();
         this.inicializarEventos();
-        //System.out.println("Usuario "+usr.);
+        System.out.println("Fecha "+new Date(System.currentTimeMillis()).toString());
+        esGoogle = false;
     }
     private void inicializarValores(){
         this.txtUser = findViewById(R.id.edtUsuario);
@@ -87,7 +90,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validarCampos()){
-                    obtenerTipoLogin(txtUser.getText().toString());
+                    obtenerTipoLogin(txtUser.getText().toString(), null);
                 }else{
                     AlertDialog.Builder ad = new AlertDialog.Builder(Login.this);
                     ad.setTitle("Campos Vacíos");
@@ -181,8 +184,6 @@ public class Login extends AppCompatActivity {
     private void borrarUsuario(){
         FirebaseUser usr =  FirebaseAuth.getInstance().getCurrentUser();
         FirebaseAuth fa = FirebaseAuth.getInstance();
-
-        //AuthCredential credential = EmailAuthProvider.getCredential(usr.getEmail(), usr.delete())
         if(usr!=null){
             fa.signOut();
             usr.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -206,7 +207,8 @@ public class Login extends AppCompatActivity {
                 if(cuenta !=null){
                     AuthCredential credencial = GoogleAuthProvider.getCredential(cuenta.getIdToken(),null);
                     FirebaseAuth.getInstance().signInWithCredential(credencial);
-                    loginParaGoogle(cuenta.getEmail(), cuenta.getId());
+                    esGoogle = true;
+                    tipoLoginGoogle(cuenta.getEmail(), cuenta.getId());
                 }
             }catch(Exception e){
                 Toast.makeText(Login.this , "Algo salió mal, intenta nuevamente", Toast.LENGTH_SHORT).show();
@@ -214,38 +216,11 @@ public class Login extends AppCompatActivity {
             }
         }
     }
-    private void loginParaGoogle(String correo, String id){
-        new RequestList(this).login(correo, id, this, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                respuesta = new ObjRespuestaWS(response, Login.this);
-                if(respuesta.isStatus()){
-                    respuesta.mostrarRespuesta("¡Bienvenido!", "Entrar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            new com.MultiDev.hopeapp.WebService.Genericos.RequestList(Login.this).traerInfoPosLogin(correo, new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
+    private void tipoLoginGoogle(String correo, String id){
+        obtenerTipoLogin(correo, id);
 
-                                    if(!response.equals("0")&&!response.isEmpty()){
-                                        System.out.println("Respuesta Pos login "+response);
-                                        infoUsuario = new ToolJson().infoFragmentada(response,new String[]{"id_usuario","IdDoctor","nombre","apellidos","Edad","cedula","Estatus","Email"});
-                                        Intent intent = new Intent(Login.this, MainActivity.class);
-                                        intent.putExtra("infoUsuario", infoUsuario);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }
-                            });
-                        }
-                    });
-                }else{
-                    respuesta.mostrarRespuesta("¡Algo salió Mal!", "Ok");
-                }
-            }
-        });
     }
-    private void obtenerTipoLogin(String correo){
+    private void obtenerTipoLogin(String correo, @Nullable String id){
 
         new com.MultiDev.hopeapp.WebService.Genericos.RequestList(Login.this).verTipoDeUsuario(correo, new Response.Listener<String>() {
             @Override
@@ -259,14 +234,20 @@ public class Login extends AppCompatActivity {
                             case "doctor":{
                                 //Login doctor
                                 esDoctor = true;
-                                loginMaestroDoctores();
+                                if(!esGoogle)
+                                    loginMaestroDoctores();
+                                else
+                                    loginMaestroDoctoresGoogle(correo, id);
 
                                 break;
                             }
                             case "paciente":{
                                 //Login doctor
                                 esDoctor = false;
-                                loginPacientes();
+                                if(!esGoogle)
+                                    loginPacientes();
+                                else
+                                    loginPacientesMaestroGoogle(correo, id);
                                 break;
                             }
                             case "No existe":{
@@ -283,6 +264,45 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
+    private void loginPacientesMaestroGoogle(String correo, String id) {
+        new com.MultiDev.hopeapp.WebService.Pacientes.RequestList(Login.this).login(correo, id, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                respuesta = new ObjRespuestaWS(response, Login.this);
+                if(respuesta.isStatus()){
+                    respuesta.mostrarRespuesta("¡Bienvenido!", "Entrar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            traerInfoPosLoginPacientesGoogle(correo);
+                        }
+                    });
+                }else{
+                    respuesta.mostrarRespuesta("¡Algo salió Mal!", "Ok");
+                }
+            }
+        });
+    }
+
+    private void loginMaestroDoctoresGoogle(String correo, String id) {
+        new RequestList(this).login(correo, id, this, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                respuesta = new ObjRespuestaWS(response, Login.this);
+                if(respuesta.isStatus()){
+                    respuesta.mostrarRespuesta("¡Bienvenido!", "Entrar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            traerInfoPosLoginMedicosGoogle(correo);
+                        }
+                    });
+                }else{
+                    respuesta.mostrarRespuesta("¡Algo salió Mal!", "Ok");
+                }
+            }
+        });
+    }
+
     private void traerInfoPosLoginMedicos(){
         new com.MultiDev.hopeapp.WebService.Genericos.RequestList(Login.this).traerInfoPosLogin(txtUser.getText().toString(), new Response.Listener<String>() {
             @Override
@@ -302,6 +322,41 @@ public class Login extends AppCompatActivity {
     }
     private void traerInfoPosLoginPacientes(){
         new com.MultiDev.hopeapp.WebService.Pacientes.RequestList(this).traerInfoPosLoginPacientes(txtUser.getText().toString(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(!response.equals("0")&&!response.isEmpty()){
+                    System.out.println("Respuesta Pos login "+response);
+                    infoUsuario = new ToolJson().infoFragmentada(response,new String[]{"id_usuario","idPaciente","nombre","apellidos","edad","email","etapa_cancer","tipo_cancer"});
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    intent.putExtra("esDoctor", esDoctor);
+                    intent.putExtra("infoUsuario", infoUsuario);
+                    new ControlSesiones(Login.this).guardarSesion(txtUser.getText().toString(), esDoctor,infoUsuario);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+    }
+
+    private void traerInfoPosLoginMedicosGoogle(String usuario){
+        new com.MultiDev.hopeapp.WebService.Genericos.RequestList(Login.this).traerInfoPosLogin(usuario, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(!response.equals("0")&&!response.isEmpty()){
+                    System.out.println("Respuesta Pos login "+response);
+                    infoUsuario = new ToolJson().infoFragmentada(response,new String[]{"id_usuario","IdDoctor","nombre","apellidos","Edad","cedula","Estatus","Email"});
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    intent.putExtra("esDoctor", esDoctor);
+                    intent.putExtra("infoUsuario", infoUsuario);
+                    new ControlSesiones(Login.this).guardarSesion(txtUser.getText().toString(), esDoctor,infoUsuario);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+    }
+    private void traerInfoPosLoginPacientesGoogle(String usuario){
+        new com.MultiDev.hopeapp.WebService.Pacientes.RequestList(this).traerInfoPosLoginPacientes(usuario, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(!response.equals("0")&&!response.isEmpty()){

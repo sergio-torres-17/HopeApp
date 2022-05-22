@@ -120,7 +120,7 @@ public class RegistroDoctor extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     startActivity(new Intent(RegistroDoctor.this, Login.class));
-                                    finish();
+                                    RegistroDoctor.this.finish();
                                 }
                             });
                         }

@@ -105,4 +105,58 @@ public class ToolJson{
         }
         return dev;
     }
+    public String[] listarSintomas(String json){
+        String[] dev = null;
+        JSONArray arr;
+        JSONObject obj;
+        try {
+            arr = new JSONArray(json);
+            dev = new String[arr.length()];
+            for (int i = 0; i<arr.length();i++){
+                obj = arr.getJSONObject(i);
+                dev[i] =obj.getString("descripcion");
+            }
+        }catch (JSONException e){
+            System.err.println("Error al convertir json a lista SINTOMAS: "+e.getMessage());
+        }
+        return dev;
+    }
+    public String[] listarIntensidadSintomas(String json){
+        String[] dev = null;
+        JSONArray arr;
+        JSONObject obj;
+        try {
+            arr = new JSONArray(json);
+            dev = new String[arr.length()];
+            for (int i = 0; i<arr.length();i++){
+                obj = arr.getJSONObject(i);
+                dev[i] =obj.getString("descripcion");
+            }
+        }catch (JSONException e){
+            System.err.println("Error al convertir json a lista SINTOMAS: "+e.getMessage());
+        }
+        return dev;
+    }
+    public String verNombreDoctorACargo(String json){
+        String dev = null;
+        try{
+            dev = new JSONArray(json).getJSONObject(0).getString("nombre_doctor");
+        }catch(Exception e){
+            System.err.println("Error al parsear el nombre del doctor a cargo "+e.getMessage() );
+        }
+        return dev;
+    }
+    public String[] parsearInfoPacienteDetallada(String[] etiquetas, String json){
+        String[] dev = null;
+        try {
+            JSONObject obj = new JSONArray(json).getJSONObject(0);
+            dev = new String[etiquetas.length];
+            for (int i = 0;i<etiquetas.length;i++)
+                dev[i] = obj.getString(etiquetas[i]);
+        } catch (JSONException e) {
+            System.err.println("Error al parsear info detallada del paciente  "+e.getMessage());
+        }
+
+        return dev;
+    }
 }

@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import com.MultiDev.hopeapp.Herramientas.Herramientas;
 import com.MultiDev.hopeapp.Objetos.Paciente;
 import com.MultiDev.hopeapp.WebService.ConstantesURL;
+import com.MultiDev.hopeapp.WebService.Objetos.Sintoma;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.lang.reflect.MalformedParameterizedTypeException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -127,4 +129,122 @@ public class RequestList {
        fila.getCache().clear();
        fila.add(request);
    }
+   public void traerSintomas(Response.Listener<String> respuesta){
+       StringRequest request = new StringRequest(Request.Method.GET, ConstantesURL.R_MOSTRAR_SINTOMAS, respuesta, new Response.ErrorListener() {
+           @Override
+           public void onErrorResponse(VolleyError error) {
+               Toast.makeText(context, "Error al traer Sintomas  "+error.getMessage(), Toast.LENGTH_SHORT).show();
+           }
+       }){
+           @Nullable
+           @Override
+           protected Map<String, String> getParams() throws AuthFailureError {
+               return super.getParams();
+           }
+       };
+       RequestQueue fila = Volley.newRequestQueue(this.context);
+       fila.getCache().clear();
+       fila.add(request);
+   }
+   public void traerIntensidadSintomas(Response.Listener<String> respuesta){
+       StringRequest request = new StringRequest(Request.Method.GET, ConstantesURL.R_MOSTRAR_INTENSIDAD_SINTOMAS, respuesta, new Response.ErrorListener() {
+           @Override
+           public void onErrorResponse(VolleyError error) {
+               Toast.makeText(context, "Error al traer intensidades Sintomas  "+error.getMessage(), Toast.LENGTH_SHORT).show();
+           }
+       }){
+           @Nullable
+           @Override
+           protected Map<String, String> getParams() throws AuthFailureError {
+               return super.getParams();
+           }
+       };
+       RequestQueue fila = Volley.newRequestQueue(this.context);
+       fila.getCache().clear();
+       fila.add(request);
+   }
+   public void insertarSintomas(Sintoma sintoma, Response.Listener<String> respuesta){
+        StringRequest request = new StringRequest(Request.Method.POST, ConstantesURL.R_INSERTAR_SINTOMAS, respuesta, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.err.println("Error al insertar los sintomas "+error.getMessage());
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> dev = new HashMap<>();
+                dev.put("sintoma", sintoma.getSintoma());
+                dev.put("fecha", sintoma.getFecha().toString());
+                dev.put("hora", sintoma.getHora());
+                dev.put("idPaciente", String.valueOf(sintoma.getIdPersona()));
+                dev.put("intensidad", sintoma.getIntensidad());
+                dev.put("detalles", sintoma.getDetalles());
+                return dev;
+            }
+        };
+       RequestQueue fila = Volley.newRequestQueue(this.context);
+       fila.getCache().clear();
+       fila.add(request);
+   }
+   public void verInfoPacienteDetallada(int idUsuario, Response.Listener<String> peticion){
+        StringRequest request = new StringRequest(Request.Method.POST, ConstantesURL.R_VER_PACIENTE_DETALLADA, peticion, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> dev = new HashMap<>();
+                dev.put("idUsuario", String.valueOf(idUsuario));
+                return dev;
+            }
+        };
+        RequestQueue fila = Volley.newRequestQueue(this.context);
+        fila.getCache().clear();
+        fila.add(request);
+   }
+   public void verIdDoctorACargo(Response.Listener<String> peticion,int idPaciente){
+        StringRequest request = new StringRequest(Request.Method.POST, ConstantesURL.R_OBTENER_DOCTOR_A_CARGO, peticion, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                System.err.println("Error al obtener el id del doctor a cargo "+error.getMessage());
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> prm = new HashMap<>();
+                prm.put("idPaciente", String.valueOf(idPaciente));
+                return prm;
+            }
+        };
+        RequestQueue fila = Volley.newRequestQueue(this.context);
+        fila.getCache().clear();
+        fila.add(request);
+   }
+   public  void verInfoPacienteDetallada(Response.Listener<String> peticion, String nombreCompletoPaciente){
+       StringRequest request = new StringRequest(Request.Method.POST, ConstantesURL.R_TRAER_INFO_PACIENTE_DETALLADA, peticion, new Response.ErrorListener() {
+           @Override
+           public void onErrorResponse(VolleyError error) {
+
+               System.err.println("Error al obtener el id del doctor a cargo "+error.getMessage());
+           }
+       }){
+           @Nullable
+           @Override
+           protected Map<String, String> getParams() throws AuthFailureError {
+               Map<String,String> prm = new HashMap<>();
+               prm.put("nombrePaciente", String.valueOf(nombreCompletoPaciente));
+               return prm;
+           }
+       };
+       RequestQueue fila = Volley.newRequestQueue(this.context);
+       fila.getCache().clear();
+       fila.add(request);
+   }
+
 }

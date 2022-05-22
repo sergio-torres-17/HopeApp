@@ -70,5 +70,14 @@
     <string name="opcMenuGenMiCuenta">Mi cuenta</string>
     <string name="opcMenuGenSalir">Salir</string>
     <string name="preferences_file_key">SessionSaved</string>
+    <!--Detalles de pacientes-->
+    <string name="txtTituloDPDetalles">Detalles del paciente </string>
+    <string name="txtLblDPNombrePaciente">Nombre Paciente</string>
+    <string name="txtLblDPApellidosPaciente">Apellidos Paciente</string>
+    <string name="txtLblDPApellidosEdad">Edad</string>
+    <string name="txtLblDPTipoCancer">Tipo Cancer</string>
+    <string name="txtLblDPTipoEtapa">Etapa el cancer</string>
+    <string name="lblImagenExpediente">Imagen Expediente</string>
+    <string name="BtnDPRegistrar">Quiero hacerme cargo del paciente</string>
 
 </resources>

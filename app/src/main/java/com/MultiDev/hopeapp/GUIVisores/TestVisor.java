@@ -23,7 +23,7 @@ public class TestVisor extends AppCompatActivity {
         setContentView(R.layout.activity_test_visor);
         this.rv = findViewById(R.id.rvTestPer);
         rv.setLayoutManager(new LinearLayoutManager(TestVisor.this));
-        AdaptadorTarjeta tarjeta = new AdaptadorTarjeta(getPacientes());
+        AdaptadorTarjeta tarjeta = new AdaptadorTarjeta(getPacientes(), getApplicationContext());
         rv.setAdapter(tarjeta);
     }
     private List<Paciente> getPacientes(){

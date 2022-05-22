@@ -132,7 +132,8 @@ public class VentanaRegistroUno extends AppCompatActivity {
                     AuthCredential credencial = GoogleAuthProvider.getCredential(cuenta.getIdToken(),null);
                     FirebaseAuth.getInstance().signInWithCredential(credencial);
                     mostrarCuadroEdad(cuenta.getGivenName(), cuenta.getFamilyName(), cuenta.getEmail(),cuenta.getId());
-                }
+                }else
+                    System.err.println("Cuenta es nulo");
             }catch (Exception e){
                 Toast.makeText(VentanaRegistroUno.this , "Algo salió mal, intenta nuevamente", Toast.LENGTH_SHORT).show();
             }
@@ -164,17 +165,20 @@ public class VentanaRegistroUno extends AppCompatActivity {
              new RequestList(VentanaRegistroUno.this).validarExistenciaDeUsuario(nombre, apellidos, correo, new Response.Listener<String>() {
                  @Override
                  public void onResponse(String response) {
+                     System.out.println("Respuesta validar existencia usaurio "+response);
                     if(!response.isEmpty()&&!response.equals("0")){
                         if(!txtEdad.getText().toString().equals("")){
+                            Intent intent;
                             if(esDoctor){
-                                Intent intent = new Intent(VentanaRegistroUno.this, RegistroDoctor.class);
-                                intent.putExtra("usrTxt", nombre+","+apellidos+","+txtEdad.getText().toString()+","+correo+","+password);
-                                startActivity(intent);
+                                System.out.println("Es doctor");
+                                intent = new Intent(VentanaRegistroUno.this, RegistroDoctor.class);
                             }else{
-                                Intent intent = new Intent(VentanaRegistroUno.this, RegistroPaciente.class);
-                                intent.putExtra("usrTxt", nombre+","+apellidos+","+txtEdad.getText().toString()+","+correo+","+password);
-                                startActivity(intent);
+                                intent = new Intent(VentanaRegistroUno.this, RegistroPaciente.class);
+                                System.out.println("Es paciente");
                             }
+                            intent.putExtra("usrTxt", nombre+","+apellidos+","+txtEdad.getText().toString()+","+correo+","+password);
+                            System.out.println("Iniciando actividad");
+                            startActivity(intent);
                         }else
                             Toast.makeText(VentanaRegistroUno.this, "Por favor, introduce una edad valida", Toast.LENGTH_SHORT).show();
                     }

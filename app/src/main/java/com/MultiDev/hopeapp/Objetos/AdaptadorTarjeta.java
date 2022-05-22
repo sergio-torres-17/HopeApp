@@ -1,5 +1,7 @@
 package com.MultiDev.hopeapp.Objetos;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +11,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.MultiDev.hopeapp.GUIVisores.VisorPacientesDetalles;
 import com.MultiDev.hopeapp.R;
 
 import java.util.List;
 
 public class AdaptadorTarjeta extends RecyclerView.Adapter<AdaptadorTarjeta.ViewHolder> {
     private List<Paciente> pacientes;
+    private Context context;
 
-    public AdaptadorTarjeta(List<Paciente> pacientes) {
+    public AdaptadorTarjeta(List<Paciente> pacientes, Context context) {
         this.pacientes = pacientes;
+        this.context = context;
     }
 
     @NonNull
@@ -30,6 +35,15 @@ public class AdaptadorTarjeta extends RecyclerView.Adapter<AdaptadorTarjeta.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        int prf = position;
+        holder.txtNombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent  intent = new Intent(context, VisorPacientesDetalles.class);
+                intent.putExtra("idPaciente", String.valueOf(pacientes.get(prf).getUsr().getNombre()+" "+pacientes.get(prf).getUsr().getApellidos()));
+                context.startActivity(intent);
+            }
+        });
         holder.imgPaciente.setImageResource(R.drawable.olsen);
         holder.txtNombre.setText(pacientes.get(position).getUsr().getNombre()+ " "+pacientes.get(position).getUsr().getApellidos());
         holder.txtEtapa.setText("Etapa: "+pacientes.get(position).getEtapa());
