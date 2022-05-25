@@ -1,11 +1,22 @@
 package com.MultiDev.hopeapp;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
+import android.media.Image;
+import android.net.Uri;
+import android.net.wifi.p2p.WifiP2pManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.MultiDev.hopeapp.Herramientas.Herramientas;
 import com.MultiDev.hopeapp.Herramientas.ServicioNotificacion;
 import com.MultiDev.hopeapp.Objetos.Doctor;
 import com.MultiDev.hopeapp.Objetos.Paciente;
@@ -13,6 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.Group;
 import androidx.core.app.TaskStackBuilder;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,6 +34,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.MultiDev.hopeapp.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtNombre, txtPuesto;
     private Doctor doctor;
     private Paciente paciente;
+    private Uri xx;
+    private Group grupoPacientes;
+    private Bitmap imgUsuario;
+    private ImageView imgAppUsr;
+    private NavigationView navigationView;
 
     private ServicioNotificacion servicioNotificación;
     @Override
@@ -41,8 +61,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+        navigationView = binding.navView;
         this.esDoctor = getIntent().getExtras().getBoolean("esDoctor");
+        xx = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl();
 
         if (esDoctor){
             this.doctor = new Doctor(getIntent().getExtras().getString("infoUsuario").split(","));
@@ -52,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
         }
         else
             this.paciente = new Paciente(getIntent().getExtras().getString("infoUsuario").split(","));
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.visorPacientes, R.id.reporteSintomas, R.id.proximasCitas,R.id.miCuenta)
                 .setOpenableLayout(drawer)
@@ -104,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
     @Override
     public void onCreateSupportNavigateUpTaskStack(@NonNull TaskStackBuilder builder) {
         super.onCreateSupportNavigateUpTaskStack(builder);
@@ -113,10 +130,19 @@ public class MainActivity extends AppCompatActivity {
     public void inicializarAppbar(){
         this.txtNombre = (TextView) findViewById(R.id.txtNavNombre);
         this.txtPuesto = (TextView)findViewById(R.id.txtNavPuesto);
-        if(esDoctor)
+        this.imgAppUsr = (ImageView) findViewById(R.id.imgNavUsuario);
+        this.grupoPacientes = findViewById(R.id.grpPacientes);
+        this.imgAppUsr.setImageBitmap(this.imgUsuario);
+        if(esDoctor){
             this.txtNombre.setText(this.doctor.getUsuario().getNombre()+" "+this.doctor.getUsuario().getApellidos());
-        else
+            navigationView.getMenu().setGroupVisible(R.id.grpDoctores,true);
+            navigationView.getMenu().setGroupVisible(R.id.grpPacientes,false);
+        }
+        else{
             this.txtNombre.setText(this.paciente.getUsr().getNombre()+" "+this.paciente.getUsr().getApellidos());
+            navigationView.getMenu().setGroupVisible(R.id.grpDoctores,false);
+            navigationView.getMenu().setGroupVisible(R.id.grpPacientes,true);
+        }
         this.txtPuesto.setText((this.esDoctor)?"Doctor":"Paciente");
     }
 

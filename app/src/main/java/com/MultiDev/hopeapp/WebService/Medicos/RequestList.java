@@ -122,7 +122,7 @@ public class RequestList {
                 Map<String,String> prm = new HashMap<>();
                 prm.put("nombreDoctor",nombreMedico);
                 prm.put("nombrePaciente",nombrePaciente);
-                prm.put("fechaHora",new Date(System.currentTimeMillis()).toString());
+                prm.put("fechaHora",Herramientas.fechaActual());
                 return prm;
             }
         };

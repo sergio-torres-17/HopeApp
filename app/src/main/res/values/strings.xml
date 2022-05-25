@@ -10,6 +10,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Reporte de sintomas</string>
     <string name="menu_slideshow">Proximas citas</string>
+    <string name="opcBarHistorialSintomas">Historial Sintomas</string>
+    <string name="opcBarMiProgreso">Mi progreso</string>
+    <string name="opcBarProximasCitas">Próximas Citas</string>
     <!-- Ventana Login-->
     <string name="vLoginTxtRegistro">¡Regisrate!</string>
     <string name="vLoginTxtNuevo">¿Eres nuevo/a?</string>

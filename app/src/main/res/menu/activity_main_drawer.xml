@@ -3,29 +3,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/grpDoctores"
+        android:checkableBehavior="single"
+
+        >
         <item
             android:id="@+id/visorPacientes"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/verpacientes"
             android:title="@string/opcMenuDoctoresVerPacientes" />
         <item
             android:id="@+id/reporteSintomas"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/reportesintomas"
             android:title="@string/opcMenuDoctoresReporteSintomas" />
         <item
-            android:id="@+id/proximasCitas"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/opcMenuDoctoresProximasCitas" />
+            android:id="@+id/proximasCitasPaci"
+            android:icon="@drawable/proximascitas"
+            android:title="@string/opcBarProximasCitas" />
     </group>
     <group
+        android:id="@+id/grpPacientes"
+        >
+        <item
+            android:id="@+id/visorSintomas"
+            android:icon="@drawable/reportesintomas"
+            android:title="@string/opcBarHistorialSintomas" />
+        <item
+            android:id="@+id/miProgresoSintomas"
+            android:icon="@drawable/miprogreso"
+            android:title="@string/opcBarMiProgreso" />
+        <item
+            android:id="@+id/proximasCitas"
+            android:icon="@drawable/proximascitas"
+            android:title="@string/opcMenuDoctoresProximasCitas" />
+
+    </group>
+    <group
+
         android:menuCategory="secondary"
         android:checkableBehavior="single">
         <item
+            android:icon="@drawable/mi_cuenta"
             android:id="@+id/miCuenta"
             android:title="@string/opcMenuGenMiCuenta"
             />
         <item
             android:id="@+id/opcSalir"
+            android:icon="@drawable/salir"
             android:title="@string/opcMenuGenSalir"
             />
     </group>

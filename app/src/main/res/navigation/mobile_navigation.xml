@@ -18,11 +18,6 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/proximasCitas"
-        android:name="com.MultiDev.hopeapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
         android:id="@+id/visorPacientes"
         android:name="com.MultiDev.hopeapp.GUIVisores.VisorPacientes"
         android:label="Visor de Pacientes Sin tutela"
@@ -52,4 +47,8 @@
             app:destination="@id/opcSalir"
             app:enterAnim="@anim/introduce_fade" />
     </fragment>
+    <fragment
+        android:id="@+id/visorSintomas"
+        android:label="fragment_visor_sintomas_pacientes"
+        tools:layout="@layout/fragment_visor_sintomas_pacientes" />
 </navigation>

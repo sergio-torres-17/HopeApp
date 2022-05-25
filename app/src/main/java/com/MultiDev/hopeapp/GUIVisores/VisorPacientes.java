@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.MultiDev.hopeapp.Objetos.AdaptadorTarjeta;
 import com.MultiDev.hopeapp.Objetos.Paciente;
@@ -108,19 +109,31 @@ public class VisorPacientes extends Fragment {
         btnBuscar = view.findViewById(R.id.btnBuscarPaciente);
     }
     private void inicializarEventos(){
-        btnBuscar.setOnClickListener(view -> new RequestList(view.getContext()).mostrarPacientes(new Response.Listener<String>() {
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(String response) {
-                if(!response.isEmpty() && !response.equals("0")){
-                    System.out.println("Respuesta: "+response);
-                    pacientes = ToolJson.convertirJsonListaPacientes(response);
-                    if(pacientes.size()>0){
-                        adaptador = new AdaptadorTarjeta(pacientes, getContext());
-                        recyclerView.setAdapter(adaptador);
-                    }
+            public void onClick(View view) {
+                if(edtNombrePaciente.getText().toString().equals("")){
+                    new RequestList(view.getContext()).mostrarPacientes(new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            System.out.println("Respuesta recarga pacientes: "+response);
+                            if(!response.isEmpty() && !response.equals("0")){
+
+                                pacientes = ToolJson.convertirJsonListaPacientes(response);
+                                if(pacientes.size()>0){
+                                    adaptador = new AdaptadorTarjeta(pacientes, getContext());
+                                    recyclerView.setAdapter(adaptador);
+                                }
+                            }else if(response.equals("0")){
+                                Toast.makeText(getContext(), "No hay pacientes sin tutela en este momento", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }else{
+
                 }
             }
-        }));
+        });
         edtNombrePaciente.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

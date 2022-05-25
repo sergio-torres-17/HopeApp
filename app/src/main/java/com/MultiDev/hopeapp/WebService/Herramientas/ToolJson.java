@@ -1,5 +1,6 @@
 package com.MultiDev.hopeapp.WebService.Herramientas;
 
+import com.MultiDev.hopeapp.Herramientas.Herramientas;
 import com.MultiDev.hopeapp.Objetos.Paciente;
 import com.MultiDev.hopeapp.Objetos.Usuario;
 
@@ -39,6 +40,7 @@ public class ToolJson{
             try {
                 aux = arr.getJSONObject(i);
                 objAux = new Paciente(new Usuario(aux.getString("nombre"),aux.getString("Apellidos"),aux.getInt("edad")), aux.getString("etapa"),aux.getString("tipo"));
+                objAux.getUsr().setImgPerfil(Herramientas.base64ToImage(aux.getString("fotoBin")));
                 dev.add(objAux);
             } catch (JSONException e) {
                 System.err.println("Error al parsear el json el arreglo: "+e.getMessage());

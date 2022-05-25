@@ -44,7 +44,7 @@ public class AdaptadorTarjeta extends RecyclerView.Adapter<AdaptadorTarjeta.View
                 context.startActivity(intent);
             }
         });
-        holder.imgPaciente.setImageResource(R.drawable.olsen);
+        holder.imgPaciente.setImageBitmap(pacientes.get(position).getUsr().getImgPerfil());
         holder.txtNombre.setText(pacientes.get(position).getUsr().getNombre()+ " "+pacientes.get(position).getUsr().getApellidos());
         holder.txtEtapa.setText("Etapa: "+pacientes.get(position).getEtapa());
         holder.txtEdad.setText("Edad: "+String.valueOf(pacientes.get(position).getUsr().getEdad()));
