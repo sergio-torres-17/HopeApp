@@ -136,6 +136,7 @@ public class VentanaRegistroUno extends AppCompatActivity {
                     System.err.println("Cuenta es nulo");
             }catch (Exception e){
                 Toast.makeText(VentanaRegistroUno.this , "Algo salió mal, intenta nuevamente", Toast.LENGTH_SHORT).show();
+                System.out.println("Error "+e.getMessage());
             }
         }
     }

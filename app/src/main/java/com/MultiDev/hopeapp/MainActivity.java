@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = binding.drawerLayout;
         navigationView = binding.navView;
         this.esDoctor = getIntent().getExtras().getBoolean("esDoctor");
-        xx = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl();
+        //xx = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl();
 
         if (esDoctor){
             this.doctor = new Doctor(getIntent().getExtras().getString("infoUsuario").split(","));

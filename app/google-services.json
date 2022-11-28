@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "933262354310",
-    "project_id": "hopeapp-6d53b",
-    "storage_bucket": "hopeapp-6d53b.appspot.com"
+    "project_number": "865754030698",
+    "project_id": "hopea-e235a",
+    "storage_bucket": "hopea-e235a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:933262354310:android:d5ae050e9f3f03dba5ae07",
+        "mobilesdk_app_id": "1:865754030698:android:a7260fcaf6ad7ad5a42013",
         "android_client_info": {
           "package_name": "com.MultiDev.hopeapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "933262354310-32s891ifhpvrv2hl6pbrpkkbbjrv83sq.apps.googleusercontent.com",
+          "client_id": "865754030698-sqhfj7dfle19qf267td2fkb4jkh6ui97.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.MultiDev.hopeapp",
-            "certificate_hash": "bb3d9bde1519a28bb56dfd4e3528d13ccce5aace"
+            "certificate_hash": "0665ba16b7b86624b6eb6f27723909df59683551"
           }
         },
         {
-          "client_id": "933262354310-o5pqun9rlh3iegv4mudi83l9sr1dk9c0.apps.googleusercontent.com",
+          "client_id": "865754030698-kjlks2lm457h7u922q4gp71ev7u2h3gl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA2CyRx6kfo6AnPDf26qptExMFiT3TEbk8"
+          "current_key": "AIzaSyBDbVMCpzqtWggvg6ljkqhnnZmbSDAaMGQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "933262354310-o5pqun9rlh3iegv4mudi83l9sr1dk9c0.apps.googleusercontent.com",
+              "client_id": "865754030698-kjlks2lm457h7u922q4gp71ev7u2h3gl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
